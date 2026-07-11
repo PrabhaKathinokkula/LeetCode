@@ -1,21 +1,18 @@
-// Last updated: 7/11/2026, 8:01:54 PM
+// Last updated: 7/11/2026, 8:02:42 PM
 1class Solution {
-2    public int searchInsert(int[] nums, int target) {
-3        int left = 0;
-4        int right = nums.length - 1;
+2    public int lengthOfLastWord(String s) {
+3        int length = 0;
+4        int i = s.length() - 1;
 5
-6        while (left <= right) {
-7            int mid = left + (right - left) / 2;
-8
-9            if (nums[mid] == target) {
-10                return mid;
-11            } else if (nums[mid] < target) {
-12                left = mid + 1;
-13            } else {
-14                right = mid - 1;
-15            }
-16        }
-17
-18        return left;
-19    }
-20}
+6        while (i >= 0 && s.charAt(i) == ' ') {
+7            i--;
+8        }
+9
+10        while (i >= 0 && s.charAt(i) != ' ') {
+11            length++;
+12            i--;
+13        }
+14
+15        return length;
+16    }
+17}
