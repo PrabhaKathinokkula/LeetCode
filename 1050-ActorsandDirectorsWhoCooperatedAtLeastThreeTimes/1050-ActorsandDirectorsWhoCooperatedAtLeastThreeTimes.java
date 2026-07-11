@@ -1,28 +1,26 @@
-// Last updated: 7/11/2026, 11:16:16 PM
-1import java.util.Stack;
-2
-3class Solution {
-4    public boolean isValid(String s) {
-5        Stack<Character> stack = new Stack<>();
-6
-7        for (char ch : s.toCharArray()) {
-8            if (ch == '(' || ch == '{' || ch == '[') {
-9                stack.push(ch);
+// Last updated: 7/11/2026, 11:17:01 PM
+1class Solution {
+2    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+3        ListNode dummy = new ListNode(-1);
+4        ListNode current = dummy;
+5
+6        while (list1 != null && list2 != null) {
+7            if (list1.val <= list2.val) {
+8                current.next = list1;
+9                list1 = list1.next;
 10            } else {
-11                if (stack.isEmpty()) {
-12                    return false;
-13                }
-14
-15                char top = stack.pop();
+11                current.next = list2;
+12                list2 = list2.next;
+13            }
+14            current = current.next;
+15        }
 16
-17                if ((ch == ')' && top != '(') ||
-18                    (ch == '}' && top != '{') ||
-19                    (ch == ']' && top != '[')) {
-20                    return false;
-21                }
-22            }
-23        }
-24
-25        return stack.isEmpty();
-26    }
-27}
+17        if (list1 != null) {
+18            current.next = list1;
+19        } else {
+20            current.next = list2;
+21        }
+22
+23        return dummy.next;
+24    }
+25}
