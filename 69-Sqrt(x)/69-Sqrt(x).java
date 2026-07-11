@@ -1,19 +1,16 @@
-// Last updated: 7/11/2026, 8:09:56 PM
+// Last updated: 7/11/2026, 8:10:33 PM
 1class Solution {
-2    public int climbStairs(int n) {
-3        if (n <= 2) {
-4            return n;
-5        }
-6
-7        int first = 1;
-8        int second = 2;
-9
-10        for (int i = 3; i <= n; i++) {
-11            int third = first + second;
-12            first = second;
-13            second = third;
-14        }
-15
-16        return second;
-17    }
-18}
+2    public ListNode deleteDuplicates(ListNode head) {
+3        ListNode current = head;
+4
+5        while (current != null && current.next != null) {
+6            if (current.val == current.next.val) {
+7                current.next = current.next.next;
+8            } else {
+9                current = current.next;
+10            }
+11        }
+12
+13        return head;
+14    }
+15}
