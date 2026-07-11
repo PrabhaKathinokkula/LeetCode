@@ -1,6 +1,21 @@
-// Last updated: 7/11/2026, 11:17:47 PM
+// Last updated: 7/11/2026, 11:18:32 PM
 1class Solution {
-2    public int strStr(String haystack, String needle) {
-3        return haystack.indexOf(needle);
-4    }
-5}
+2    public int lengthOfLastWord(String s) {
+3        int i = s.length() - 1;
+4
+5        // Skip trailing spaces
+6        while (i >= 0 && s.charAt(i) == ' ') {
+7            i--;
+8        }
+9
+10        int length = 0;
+11
+12        // Count the last word
+13        while (i >= 0 && s.charAt(i) != ' ') {
+14            length++;
+15            i--;
+16        }
+17
+18        return length;
+19    }
+20}
