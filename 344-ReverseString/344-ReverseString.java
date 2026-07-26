@@ -1,22 +1,31 @@
-// Last updated: 7/25/2026, 11:37:11 PM
+// Last updated: 7/26/2026, 11:43:33 PM
 1class Solution {
-2    public void reverseString(char[] s) {
-3        int left=0;
-4        int right=s.length-1;
-5        for(int i=0;i<s.length-1;i++){
-6            
-7                while(left<right){
-8                   char temp=s[left];
-9                    s[left]=s[right];
-10                    s[right]=temp;
-11                    left++;
-12                    right--;
-13            
-14                }
-15            
-16            
-17
-18        }
-19        
-20    }
-21}
+2    public boolean isPalindrome(String s) {
+3        int l=0;
+4        int r=s.length()-1;
+5            while(l<=r){
+6                while(l<r && !Character.isLetterOrDigit(s.charAt(l)) ){
+7                    l++;
+8                  
+9                }
+10                while(l<r && !Character.isLetterOrDigit(s.charAt(r)) ){
+11                    r--;
+12                }
+13                int left=Character.toLowerCase(s.charAt(l));
+14                int right=Character.toLowerCase(s.charAt(r));
+15
+16                if(left != right){
+17                    return false;
+18                }
+19                 l++;
+20                r--;
+21
+22        
+23                 
+24
+25            }
+26             return true;
+27        
+28        
+29    }
+30}
