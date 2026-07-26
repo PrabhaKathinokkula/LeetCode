@@ -1,20 +1,23 @@
-// Last updated: 7/27/2026, 1:40:08 AM
+// Last updated: 7/27/2026, 2:17:52 AM
 1class Solution {
-2    public boolean isAnagram(String s, String t) {
-3        if(s.length()!= t.length()){
-4            return false;
-5        }
+2    public int lengthOfLongestSubstring(String s) {
+3        HashSet<Character> set= new HashSet<>();
+4        int l=0;
+5        int maxLength=0;
 6
-7    int[] arr=new int[26];
-8    for(int i=0;i<s.length();i++){
-9        arr[s.charAt(i) - 'a']++;
-10        arr[t.charAt(i) - 'a']--;
-11    }
-12        for(int i=0;i<arr.length;i++){
-13        if(arr[i] != 0){
-14            return false;
-15        }
-16        }
-17        return true;
-18    }
-19}
+7        int r=0;
+8
+9        for(r=0;r<s.length();r++){
+10            while(set.contains(s.charAt(r))){
+11                set.remove(s.charAt(l));
+12                l++;
+13            }
+14            set.add(s.charAt(r));
+15            
+16            maxLength= Math.max(maxLength,r-l+1);
+17            
+18        }
+19        
+20        return maxLength;
+21    }
+22}
